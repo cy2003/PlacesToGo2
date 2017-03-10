@@ -23,3 +23,5 @@ Things you may want to cover:
 
 * ...
 # PlacesToGo
+
+Use `rails s` in terminal to run the application
