@@ -1,0 +1,12 @@
+<h2>List of States, Cities, or Towns</h2>
+
+<%= @user.name %>
+<ul>
+  <% @user.cities.each do |city| %>
+    <li>
+      <%= link_to "#{city.name}" %>
+      <br />
+      <label style="margin-left: 20px"><%= link_to "Restaurants", restaurant_path%></label>
+    </li>
+  <% end %>
+</ul>

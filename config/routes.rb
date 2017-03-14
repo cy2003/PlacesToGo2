@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: "logout"
+  post '/users/:id', to: 'users#show'
 
   resources :user_countries
   resources :hotels
@@ -12,5 +13,6 @@ Rails.application.routes.draw do
   resources :cities
   resources :countries
   resources :users
+  resources :sessions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

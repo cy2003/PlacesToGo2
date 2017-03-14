@@ -1,0 +1,18 @@
+<h2><%= @country.name %></h2>
+
+<ul>
+  <% if current_user %>
+    <% @country.cities.each do |city| %>
+      <li>
+
+        <%= link_to "#{city.name}", city_path(city) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<%= link_to "Edit Country", edit_country_path %>
+<br />
+
+<%= link_to "Add State, City, or Town", new_city_path(:country_id => @country.id) %>

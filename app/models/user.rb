@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :hotels, through: :cities
 
   has_secure_password
-  
+
 end

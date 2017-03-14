@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<h3>Name:  <%= @user.name %></h3>
+
+<h4>Here are the places you want to go</h4>
+<%= link_to "Countries", country_path %>
+<br />
+<%= link_to "States, Cities and Towns", city_path %>
+<br />
+<%= link_to "Sites", site_path %>
+<br />
+<%= link_to "Restaurants", restaurant_path %>
+<br />
+<%= link_to "Hotels", hotel_path %>
+<br />
+<br />
+<h4>Add new country</h4>
+<%= link_to "Add Country", new_country_path %>

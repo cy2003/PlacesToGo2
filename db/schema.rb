@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20170310014808) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
+    t.integer  "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170310014808) do
     t.string   "name"
     t.string   "website"
     t.text     "note"
+    t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170310014808) do
     t.string   "name"
     t.string   "website"
     t.text     "note"
+    t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170310014808) do
     t.string   "name"
     t.string   "website"
     t.text     "note"
+    t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
