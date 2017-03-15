@@ -25,10 +25,10 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if current_user %>
-              <li><%= link_to "Hello, #{current_user.name}!", user_path(current_user) %></li>
+              <li><%= link_to "Hello, #{current_user.name}!", user_path(current_user)%></li>
               <li><%= link_to "Countries", countries_path %></li>
-              <li><%= link_to "Towns or Cities", city_path(current_user) %></li>
-              <li><%= link_to "Sites", site_path(current_user) %></li>
+              <li><%= link_to "Towns or Cities", cities_path %></li>
+              <li><%= link_to "Sites", sites_path %></li>
               <li><%= link_to "Log Out", logout_path %></li>
             <% else %>
               <li><%= link_to "Sign Up", new_user_path %></li>

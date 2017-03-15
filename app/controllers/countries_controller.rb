@@ -1,3 +1,5 @@
+require 'pry'
+
 class CountriesController < ApplicationController
 
   def show
@@ -14,7 +16,12 @@ class CountriesController < ApplicationController
   end
 
   def create
-    @country = Country.create(country_params)
+    @country = Country.find_or_initialize_by(name: params[:country][:name])
+    @country.user_ids << current_user.id
+    @user = User.find_by(id: current_user.id)
+    @user.country_ids << @country.id
+    @user.save
+    @country.save
     redirect_to country_path(@country)
   end
 
@@ -23,8 +30,15 @@ class CountriesController < ApplicationController
   end
 
   def update
-    @country = Country.create(country_params)
+    @country = Country.find(params[:id])
+    @country.update(country_params)
     redirect_to country_path(@country)
+  end
+
+  def destroy
+    @country = Country.find(params[:id])
+    @country.destroy
+    redirect_to countries_path
   end
 
   private

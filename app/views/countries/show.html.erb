@@ -11,8 +11,11 @@
   <% end %>
 </ul>
 
-
-<%= link_to "Edit Country", edit_country_path %>
 <br />
 
 <%= link_to "Add State, City, or Town", new_city_path(:country_id => @country.id) %>
+<br />
+<br />
+<%= link_to "Edit Country", edit_country_path %>
+<br />
+<%= link_to "Delete This Country", country_path(@country), method: :delete %>

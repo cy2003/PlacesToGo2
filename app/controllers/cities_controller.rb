@@ -7,7 +7,6 @@ class CitiesController < ApplicationController
   end
 
   def create
-    binding.pry
     @city = City.find(params[:id])
     if !!@city.country_id
       @city = City.find(params[:id])

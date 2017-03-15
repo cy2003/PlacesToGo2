@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: "logout"
   post '/users/:id', to: 'users#show'
+  get '/countries', to: 'countries#index'
 
   resources :user_countries
   resources :hotels
