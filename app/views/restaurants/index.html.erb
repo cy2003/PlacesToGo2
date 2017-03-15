@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<h2>Restaurants</h2>
+
+<ul>
+  <% if current_user %>
+    <% current_user.restaurants.each do |restaurant|  %>
+      <li>
+        <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<br />

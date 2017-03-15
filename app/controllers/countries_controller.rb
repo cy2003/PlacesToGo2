@@ -16,12 +16,10 @@ class CountriesController < ApplicationController
   end
 
   def create
-    @country = Country.find_or_initialize_by(name: params[:country][:name])
-    @country.user_ids << current_user.id
-    @user = User.find_by(id: current_user.id)
-    @user.country_ids << @country.id
-    @user.save
+    @country = Country.create(country_params)
+    @country.user_id = current_user.id
     @country.save
+    flash[:notice] = "#{@country.name} is a new country."
     redirect_to country_path(@country)
   end
 
@@ -38,6 +36,7 @@ class CountriesController < ApplicationController
   def destroy
     @country = Country.find(params[:id])
     @country.destroy
+    flash[:notice] = "You deleted #{@country.name}."
     redirect_to countries_path
   end
 

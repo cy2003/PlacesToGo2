@@ -1,8 +1,12 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h2>Locations</h2>
 
 <ul>
   <% if current_user %>
-    <% current_user.locations.each do |location| %>
+    <% current_user.locations.each do |location|  %>
       <li>
         <%= link_to "#{location.name}", location_path(location) %>
       </li>
@@ -13,4 +17,3 @@
 
 
 <%= link_to "Add Location", new_location_path %>
-<br />

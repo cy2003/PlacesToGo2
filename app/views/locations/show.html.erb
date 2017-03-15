@@ -1,3 +1,45 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h2>Places to Go in <%=@location.name%></h2>
 
-<label style="margin-left: 20px"><%= link_to "Restaurants", restaurant_path%></label>
+<h3>Sites</h3>
+<ul>
+  <% @location.sites.each do |site| %>
+    <li>
+      <%= link_to "#{site.name}", site_path(site) %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Add New Site", new_site_path %>
+
+<h3>Restaurants</h3>
+<ul>
+  <% @location.restaurants.each do |restaurant| %>
+    <li>
+      <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Add New Restaurant", new_restaurant_path %>
+
+<h3>Hotels</h3>
+<ul>
+  <% @location.hotels.each do |hotel| %>
+    <li>
+      <%= link_to "#{hotel.name}", hotel_path(hotel) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add New Hotel", new_hotel_path %>
+
+
+<!-- <label style="margin-left: 20px"><%= link_to "Restaurants", restaurant_path%></label> -->
+<br />
+<br />
+<br />
+<%= link_to "Edit Location", edit_location_path %>
+<br />
+<%= link_to "Delete This Location", location_path(@location), method: :delete %>

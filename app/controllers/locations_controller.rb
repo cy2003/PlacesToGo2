@@ -7,15 +7,11 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.find(params[:id])
-    if !!@location.country_id
-      @location = Location.find(params[:id])
-      @location.update(location_params)
-      redirect_to location_path(@location)
-    else
-      @location = Location.create(location_params)
-      redirect_to location_path(@location)
-    end
+    @location = Location.find_or_initialize_by(name: params[:location][:name])
+    @location.country_id = params[:location][:country_id]
+    @location.save
+    flash[:notice] = "#{@location.name} is a new location."
+    redirect_to location_path(@location)
   end
 
   def show
@@ -24,14 +20,21 @@ class LocationsController < ApplicationController
   end
 
   def update
-    if !!params[:location][:country_id]
-      @location = Location.find(params[:id])
-      @location.update(location_params)
-      redirect_to location_path(@location)
-    else
-      @location = Location.create(location_params)
-      redirect_to location_path(@location)
-    end
+    @location = Location.find_or_initialize_by(name: params[:location][:name])
+    @location.country_id = params[:location][:country_id]
+    @location.save
+    redirect_to location_path(@location)
+  end
+
+  def edit
+    @location = Location.find(params[:id])
+  end
+
+  def destroy
+    @location = Location.find(params[:id])
+    @location.destroy
+    flash[:notice] = "You deleted #{@location.name}."
+    redirect_to locations_path
   end
 
   private

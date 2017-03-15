@@ -1,11 +1,14 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h2><%= @country.name %></h2>
 
 <ul>
-  <% if current_user %>
-    <% @country.locations.each do |location| %>
+  <% current_user.locations.each do |location| %>
+    <% if location.country_id == @country.id %>
       <li>
-
-        <%= link_to "#{location.name}", location_path(location) %>
+        <%= link_to "#{location.name}", location_path(location)%>
       </li>
     <% end %>
   <% end %>
@@ -13,7 +16,7 @@
 
 <br />
 
-<%= link_to "Location", new_location_path(:country_id => @country.id) %>
+<%= link_to "Add New Location in #{@country.name}", new_location_path(:country_id => @country.id) %>
 <br />
 <br />
 <%= link_to "Edit Country", edit_country_path %>

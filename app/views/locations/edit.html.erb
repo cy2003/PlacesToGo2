@@ -1,0 +1,9 @@
+<h2>Edit <%=@location.name%></h2>
+
+<%= form_for(@location) do |f| %>
+ 	<%= f.label :name %>
+ 	<%= f.text_field :name %>
+  <br>
+  <br>
+ 	<%= f.submit "Update Location" %>
+<% end %>
