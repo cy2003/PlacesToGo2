@@ -27,7 +27,7 @@
             <% if current_user %>
               <li><%= link_to "Hello, #{current_user.name}!", user_path(current_user)%></li>
               <li><%= link_to "Countries", countries_path %></li>
-              <li><%= link_to "Towns or Cities", cities_path %></li>
+              <li><%= link_to "Locations", locations_path %></li>
               <li><%= link_to "Sites", sites_path %></li>
               <li><%= link_to "Log Out", logout_path %></li>
             <% else %>

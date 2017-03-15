@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :hotels
   resources :restaurants
   resources :sites
-  resources :cities
+  resources :locations
   resources :countries
   resources :users
   resources :sessions

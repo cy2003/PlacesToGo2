@@ -1,4 +1,4 @@
-class City < ApplicationRecord
+class Location < ApplicationRecord
   belongs_to :country, required: false
   has_many :sites
   has_many :restaurants

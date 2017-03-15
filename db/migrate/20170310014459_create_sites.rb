@@ -4,7 +4,7 @@ class CreateSites < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :website
       t.text :note
-      t.integer :city_id
+      t.integer :location_id
 
       t.timestamps
     end

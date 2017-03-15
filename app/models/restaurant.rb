@@ -1,3 +1,3 @@
 class Restaurant < ApplicationRecord
-  belongs_to :city, optional: true
+  belongs_to :location, optional: true
 end

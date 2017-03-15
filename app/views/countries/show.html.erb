@@ -2,10 +2,10 @@
 
 <ul>
   <% if current_user %>
-    <% @country.cities.each do |city| %>
+    <% @country.locations.each do |location| %>
       <li>
 
-        <%= link_to "#{city.name}", city_path(city) %>
+        <%= link_to "#{location.name}", location_path(location) %>
       </li>
     <% end %>
   <% end %>
@@ -13,7 +13,7 @@
 
 <br />
 
-<%= link_to "Add State, City, or Town", new_city_path(:country_id => @country.id) %>
+<%= link_to "Location", new_location_path(:country_id => @country.id) %>
 <br />
 <br />
 <%= link_to "Edit Country", edit_country_path %>
