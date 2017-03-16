@@ -2,6 +2,11 @@ require 'pry'
 
 class LocationsController < ApplicationController
 
+  def index
+    @locations = Location.all
+    @locations.order(:name)
+  end
+
   def new
     @location = Location.create(:country_id => params[:country_id])
   end

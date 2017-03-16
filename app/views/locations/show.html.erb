@@ -6,9 +6,10 @@
 
 <h3>Sites</h3>
 <ul>
-  <% @location.sites.each do |site| %>
+  <% ordered_sites = @location.sites.order(:name) %>
+  <% ordered_sites.each do |site| %>
     <li>
-      <%= link_to "#{site.name}", site_path(site) %>
+      <%= link_to "#{site.name}", site.website, target: '_blank'%>
     </li>
   <% end %>
 </ul>
@@ -16,9 +17,10 @@
 
 <h3>Restaurants</h3>
 <ul>
-  <% @location.restaurants.each do |restaurant| %>
+  <% ordered_restaurants = @location.restaurants.order(:name) %>
+  <% ordered_restaurants.each do |restaurant| %>
     <li>
-      <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+      <%= link_to "#{restaurant.name}", restaurant.website, target: '_blank' %>
     </li>
   <% end %>
 </ul>
@@ -26,9 +28,10 @@
 
 <h3>Hotels</h3>
 <ul>
-  <% @location.hotels.each do |hotel| %>
+  <% ordered_hotels = @location.hotels.order(:name) %>
+  <% ordered_hotels.each do |hotel| %>
     <li>
-      <%= link_to "#{hotel.name}", hotel_path(hotel) %>
+      <%= link_to "#{hotel.name}", hotel.website, target: '_blank' %>
     </li>
   <% end %>
 </ul>
