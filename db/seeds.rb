@@ -60,3 +60,20 @@ alberta.hotels = [hotel5]
 piper.save
 canada.save
 alberta.save
+
+oscar = User.create(name: "Oscar", email: "oscar@me.com", password: "1234")
+australia = Country.create(name: "Australia")
+sydney = Location.create(name: "Sydney")
+site10 = Site.create(name: "Sydney Harbour Bridge", website: "http://www.australia.gov.au/about-australia/australian-story/sydney-harbour-bridge", note: "Can climb the bridge")
+site11 = Site.create(name: "Freshwater Beach", website: "http://www.sydney.com/destinations/sydney/sydney-north/manly/attractions/freshwater-beach", note: "Great for surfing.")
+restaurant8 = Restaurant.create(name: "Mamak", website: "https://mamak.com.au/", note: "Malaysian Cuisine")
+hotel6 = Hotel.create(name: "Shangri-La Hotel", website: "http://www.shangri-la.com/sydney/shangrila/", note: "5 stars")
+
+oscar.countries = [australia]
+australia.locations = [sydney]
+sydney.sites = [site10, site11]
+sydney.restaurants = [restaurant8]
+sydney.hotels = [hotel6]
+oscar.save
+australia.save
+sydney.save

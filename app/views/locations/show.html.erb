@@ -10,6 +10,8 @@
   <% ordered_sites.each do |site| %>
     <li>
       <%= link_to "#{site.name}", site.website, target: '_blank'%>
+      <br />
+      <label>Notes:</label>  <%=site.note %>
     </li>
   <% end %>
 </ul>
@@ -21,6 +23,8 @@
   <% ordered_restaurants.each do |restaurant| %>
     <li>
       <%= link_to "#{restaurant.name}", restaurant.website, target: '_blank' %>
+      <br />
+      <label>Notes:</label>  <%=restaurant.note %>
     </li>
   <% end %>
 </ul>
@@ -32,6 +36,8 @@
   <% ordered_hotels.each do |hotel| %>
     <li>
       <%= link_to "#{hotel.name}", hotel.website, target: '_blank' %>
+      <br />
+      <label>Notes:</label>  <%=hotel.note %>
     </li>
   <% end %>
 </ul>
