@@ -1,10 +1,20 @@
-<h2>List of Sites or Activities</h2>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
-<%= @user.name + "s'" %>
+<h2>Sites</h2>
+
 <ul>
-  <% @user.sites.each do |site| %>
-    <li>
-      <%= site.name %>
-    </li>
+  <% if current_user %>
+    <% ordered_sites = current_user.sites.order(:name) %>
+    <% ordered_sites.each do |site|  %>
+      <li>
+        <%= link_to "#{site.name}", site_path(site) %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
+<br />
+
+
+<!-- <%= link_to "Add Site", new_site_path %> -->

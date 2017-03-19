@@ -1,10 +1,17 @@
-<h2>List of Hotels</h2>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
-<%= @user.name + "'s" %>
+<h2>Hotels</h2>
+
 <ul>
-  <% @user.hotels.each do |hotel| %>
-    <li>
-      <%= hotel.name %>
-    </li>
+  <% if current_user %>
+    <% ordered_hotels = current_user.hotels.order(:name) %>
+    <% ordered_hotels.each do |hotel|  %>
+      <li>
+        <%= link_to "#{hotel.name}", hotel_path(hotel) %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
+<br />

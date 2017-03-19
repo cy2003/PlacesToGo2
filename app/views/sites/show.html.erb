@@ -1,0 +1,12 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+
+<h3><%= @site.name %></h3>
+<h4>Website: <%= link_to @site.website, target: '_blank'%></h4>
+<h4>Note: <%= @site.note%></h4>
+
+<%= link_to "Edit Site", edit_site_path %>
+<br />
+<%= link_to "Delete This Site", site_path(@site), method: :delete %>

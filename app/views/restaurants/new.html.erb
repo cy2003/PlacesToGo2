@@ -1,0 +1,18 @@
+<h2>Create new site for <%= @restaurant.location.name %></h2>
+
+<%= form_for(@restaurant) do |f| %>
+ 	<%= f.label :name %>
+ 	<%= f.text_field :name %>
+  <br>
+  <br>
+  <%= f.label :website %>
+ 	<%= f.text_field :website %>
+  <br>
+  <br>
+  <%= f.label :note %>
+ 	<%= f.text_field :note %>
+  <br>
+  <br>
+  <%= f.hidden_field :location_id, :value => @restaurant.location.id %>
+ 	<%= f.submit "Create Restaurant" %>
+<% end %>

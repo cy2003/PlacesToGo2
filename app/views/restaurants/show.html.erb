@@ -1,9 +1,12 @@
-<h2>List of Restaurants</h2>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
-<ul>
-  <% @user.restaurants.each do |restaurant| %>
-    <li>
-      <%= restaurant.name %>
-    </li>
-  <% end %>
-</ul>
+
+<h3><%= @restaurant.name %></h3>
+<h4>Website: <%= link_to @restaurant.website, target: '_blank'%></h4>
+<h4>Note: <%= @restaurant.note%></h4>
+
+<%= link_to "Edit Restaurant", edit_restaurant_path %>
+<br />
+<%= link_to "Delete This Restaurant", restaurant_path(@restaurant), method: :delete %>

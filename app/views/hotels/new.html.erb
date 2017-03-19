@@ -1,0 +1,18 @@
+<h2>Create new site for <%= @hotel.location.name %></h2>
+
+<%= form_for(@hotel) do |f| %>
+ 	<%= f.label :name %>
+ 	<%= f.text_field :name %>
+  <br>
+  <br>
+  <%= f.label :website %>
+ 	<%= f.text_field :website %>
+  <br>
+  <br>
+  <%= f.label :note %>
+ 	<%= f.text_field :note %>
+  <br>
+  <br>
+  <%= f.hidden_field :location_id, :value => @hotel.location.id %>
+ 	<%= f.submit "Create Hotel" %>
+<% end %>

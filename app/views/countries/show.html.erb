@@ -5,7 +5,8 @@
 <h2><%= @country.name %></h2>
 
 <ul>
-  <% current_user.locations.each do |location| %>
+  <% ordered_locations = @country.locations.order(:name) %>
+  <% ordered_locations.each do |location| %>
     <% if location.country_id == @country.id %>
       <li>
         <%= link_to "#{location.name}", location_path(location)%>

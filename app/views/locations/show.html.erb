@@ -13,7 +13,7 @@
     </li>
   <% end %>
 </ul>
-<%= link_to "Add New Site", new_site_path %>
+<%= link_to "Add New Site", new_site_path(:location_id => @location.id) %>
 
 <h3>Restaurants</h3>
 <ul>
@@ -24,7 +24,7 @@
     </li>
   <% end %>
 </ul>
-<%= link_to "Add New Restaurant", new_restaurant_path %>
+<%= link_to "Add New Restaurant", new_restaurant_path(:location_id => @location.id)  %>
 
 <h3>Hotels</h3>
 <ul>
@@ -36,7 +36,7 @@
   <% end %>
 </ul>
 
-<%= link_to "Add New Hotel", new_hotel_path %>
+<%= link_to "Add New Hotel", new_hotel_path(:location_id => @location.id)  %>
 
 
 <!-- <label style="margin-left: 20px"><%= link_to "Restaurants", restaurant_path%></label> -->
