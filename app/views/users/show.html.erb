@@ -2,71 +2,126 @@
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<h3>Name:  <%= @user.name %></h3>
+<% if current_user.id == params[:id].to_i %>
+  <h4>The places you want to go</h4>
+  <%= link_to "Countries", countries_path %>
+  <ul>
+    <% if current_user %>
+      <% ordered_countries = current_user.countries.order(:name) %>
+      <% ordered_countries.each do |country| %>
+        <li>
 
-<h4>Here are the places you want to go</h4>
-<%= link_to "Countries", countries_path %>
-<ul>
-  <% if current_user %>
-    <% ordered_countries = current_user.countries.order(:name) %>
+          <%= link_to "#{country.name}", country_path(country) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= link_to "Add New Country", new_country_path %>
+  <br />
+  <br />
+  <br />
+  <%= link_to "Locations", locations_path %>
+  <ul>
+    <% if current_user %>
+      <% ordered_locations = current_user.locations.order(:name) %>
+      <% ordered_locations.each do |location|  %>
+        <li>
+          <%= link_to "#{location.name}", location_path(location) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <br />
+  <%= link_to "Sites", sites_path %>
+  <ul>
+    <% if current_user %>
+      <% ordered_sites = current_user.sites.order(:name) %>
+      <% ordered_sites.each do |site|  %>
+        <li>
+          <%= link_to "#{site.name}", site_path(site) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <br />
+  <%= link_to "Restaurants", restaurants_path %>
+  <ul>
+    <% if current_user %>
+      <% ordered_restaurants = current_user.restaurants.order(:name) %>
+      <% ordered_restaurants.each do |restaurant|  %>
+        <li>
+          <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <br />
+  <%= link_to "Hotels", hotels_path %>
+  <ul>
+    <% if current_user %>
+      <% ordered_hotels = current_user.hotels.order(:name) %>
+      <% ordered_hotels.each do |hotel|  %>
+        <li>
+          <%= link_to "#{hotel.name}", hotel_path(hotel) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+<% else current_user.id != params[:id] %>
+  <% @user.id = params[:id] %>
+  <h4>The places <%= @user.name %> want to go</h4>
+  <h5>Countries</h5>
+  <ul>
+    <% ordered_countries = @user.countries.order(:name) %>
     <% ordered_countries.each do |country| %>
       <li>
-
-        <%= link_to "#{country.name}", country_path(country) %>
+        <%= "#{country.name}" %>
       </li>
     <% end %>
-  <% end %>
-</ul>
-<%= link_to "Add New Country", new_country_path %>
-<br />
-<br />
-<br />
-<%= link_to "Locations", locations_path %>
-<ul>
-  <% if current_user %>
-    <% ordered_locations = current_user.locations.order(:name) %>
+  </ul>
+  <br />
+  <br />
+  <br />
+  <h5>Locations</h5>
+  <ul>
+    <% ordered_locations = @user.locations.order(:name) %>
     <% ordered_locations.each do |location|  %>
       <li>
-        <%= link_to "#{location.name}", location_path(location) %>
+        <%= "#{location.name}" %>
       </li>
     <% end %>
-  <% end %>
-</ul>
-<br />
-<%= link_to "Sites", sites_path %>
-<ul>
-  <% if current_user %>
-    <% ordered_sites = current_user.sites.order(:name) %>
+  </ul>
+  <br />
+  <h5>Sites</h5>
+  <ul>
+    <% ordered_sites = @user.sites.order(:name) %>
     <% ordered_sites.each do |site|  %>
       <li>
-        <%= link_to "#{site.name}", site_path(site) %>
+        <%= link_to "#{site.name}", site.website, target: '_blank'%>
       </li>
     <% end %>
-  <% end %>
-</ul>
-<br />
-<%= link_to "Restaurants", restaurants_path %>
-<ul>
-  <% if current_user %>
-    <% ordered_restaurants = current_user.restaurants.order(:name) %>
+  </ul>
+  <br />
+  <h5>Restaurants</h5>
+  <ul>
+    <% ordered_restaurants = @user.restaurants.order(:name) %>
     <% ordered_restaurants.each do |restaurant|  %>
       <li>
-        <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+        <%= link_to "#{restaurant.name}", restaurant.website, target: '_blank' %>
       </li>
     <% end %>
-  <% end %>
-</ul>
-<br />
-<%= link_to "Hotels", hotels_path %>
-<ul>
-  <% if current_user %>
-    <% ordered_hotels = current_user.hotels.order(:name) %>
+  </ul>
+  <br />
+  <h5>Hotels</h5>
+  <ul>
+    <% ordered_hotels = @user.hotels.order(:name) %>
     <% ordered_hotels.each do |hotel|  %>
       <li>
-        <%= link_to "#{hotel.name}", hotel_path(hotel) %>
+        <%= link_to "#{hotel.name}", hotel.website, target: '_blank' %>
       </li>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+<% end %>
 <br />
 <br />
