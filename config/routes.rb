@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :users 
+  # resources :users
   resources :user_countries
   resources :hotels
   resources :restaurants
@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :locations
   resources :countries
   resources :sessions
+  resources :relationships, only:[:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

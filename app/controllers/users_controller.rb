@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    binding.pry
     if params[:search]
       @user = User.search(params[:search])
       return redirect_to user_path(@user.ids[0])
@@ -30,8 +29,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    binding.pry
     @user = User.find(params[:id])
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follow'
   end
 
   private

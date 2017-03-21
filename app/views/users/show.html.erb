@@ -2,21 +2,11 @@
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<% @user ||= current_user %>
-<div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
-    following
-  </a> &nbsp;&nbsp;
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    followers
-  </a>
-</div>
+<section class="stats">
+  <%= render 'shared/stats' %>
+</section>
+
+
 
 <% if current_user.id == params[:id].to_i %>
   <h4>The places you want to go</h4>
@@ -86,8 +76,17 @@
 
 <% else current_user.id != params[:id] %>
   <% @user.id = params[:id] %>
-  <h4>The places <%= @user.name %> want to go</h4>
+  <% if current_user != @user %>
+    <div id="follow_form">
+    <% if current_user.following?(@user) %>
+      <%= render 'unfollow' %>
+    <% else %>
+      <%= render 'follow' %>
+    <% end %>
+    </div>
+  <% end %>
 
+  <h4>The places <%= @user.name %> wants to go</h4>
 
   <h5>Countries</h5>
   <ul>
@@ -98,9 +97,6 @@
       </li>
     <% end %>
   </ul>
-  <br />
-  <br />
-  <br />
   <h5>Locations</h5>
   <ul>
     <% ordered_locations = @user.locations.order(:name) %>
@@ -110,7 +106,6 @@
       </li>
     <% end %>
   </ul>
-  <br />
   <h5>Sites</h5>
   <ul>
     <% ordered_sites = @user.sites.order(:name) %>
@@ -120,7 +115,6 @@
       </li>
     <% end %>
   </ul>
-  <br />
   <h5>Restaurants</h5>
   <ul>
     <% ordered_restaurants = @user.restaurants.order(:name) %>
@@ -130,7 +124,6 @@
       </li>
     <% end %>
   </ul>
-  <br />
   <h5>Hotels</h5>
   <ul>
     <% ordered_hotels = @user.hotels.order(:name) %>
