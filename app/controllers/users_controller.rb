@@ -5,10 +5,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    binding.pry
     if params[:search]
       @user = User.search(params[:search])
-      redirect_to users_path
-    else
+      return redirect_to user_path(@user.ids[0])
+    else !params[:search]
       flash[:notice] = "User was not found"
       redirect_to '/'
     end
@@ -29,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    binding.pry
     @user = User.find(params[:id])
   end
 

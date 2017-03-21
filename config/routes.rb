@@ -6,14 +6,19 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: "logout"
   post '/users/:id', to: 'users#show'
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
+  # resources :users 
   resources :user_countries
   resources :hotels
   resources :restaurants
   resources :sites
   resources :locations
   resources :countries
-  resources :users
   resources :sessions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
