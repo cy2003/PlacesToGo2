@@ -32,7 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-flash3'
-gem "bootstrap-sass", "~> 3.1.1"
+# gem "bootstrap-sass", "~> 3.1.1"
+
+#Use Materialize
+gem 'materialize-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

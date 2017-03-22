@@ -4,7 +4,7 @@
 
 
 <h3><%= @restaurant.name %></h3>
-<h4>Website: <%= link_to @restaurant.website, target: '_blank'%></h4>
+<h4>Website: <%= link_to "#{@restaurant.website}", @restaurant.website, target: '_blank'%></h4>
 <h4>Note: <%= @restaurant.note%></h4>
 
 <%= link_to "Edit Restaurant", edit_restaurant_path %>

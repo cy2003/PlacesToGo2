@@ -69,11 +69,43 @@ site11 = Site.create(name: "Freshwater Beach", website: "http://www.sydney.com/d
 restaurant8 = Restaurant.create(name: "Mamak", website: "https://mamak.com.au/", note: "Malaysian Cuisine")
 hotel6 = Hotel.create(name: "Shangri-La Hotel", website: "http://www.shangri-la.com/sydney/shangrila/", note: "5 stars")
 
-oscar.countries = [australia]
+us2 = Country.create(name: "United States")
+washington = Location.create(name: "Washington")
+site14 = Site.create(name: "Olympic National Park", website: "https://www.nps.gov/olym/index.htm", note: "Oceans to mountaintops")
+site15 = Site.create(name: "San Juan Islands", website: "https://www.visitsanjuans.com/", note: "Loved it here. Saw killer whales")
+restaurant11 = Restaurant.create(name: "Friday's Crabhouse", website: "http://www.fridayscrabhouse.com/", note: "Fresh seafood. Overlooking Friday Harbor Ferry Landing.")
+restaurant12 = Restaurant.create(name: "Cynthia's Bistro", website: "http://cynthiasofcourse.com/", note: "Comfort food")
+hotel8 = Hotel.create(name: "Orcas Hotel", website: "https://www.orcashotel.com/", note: "Located on Orcas Island. Beautiful views.")
+
+oscar.countries = [australia, us2]
 australia.locations = [sydney]
 sydney.sites = [site10, site11]
 sydney.restaurants = [restaurant8]
 sydney.hotels = [hotel6]
+us2.locations = [washington]
+washington.sites = [site14, site15]
+washington.restaurants = [restaurant11, restaurant12]
+washington.hotels = [hotel8]
 oscar.save
 australia.save
 sydney.save
+us2.save
+washington.save
+
+oscar2 = User.create(name: "Oscar Two", email: "oscar2@me.com", password: "1234")
+england = Country.create(name: "England")
+london = Location.create(name: "London")
+site12 = Site.create(name: "London Eye", website: "https://www.londoneye.com/", note: "Observation Wheel. See London's landmarks from up on high.")
+site13 = Site.create(name: "Tower Bridge", website: "http://www.towerbridge.org.uk/", note: "Iconic Bridge")
+restaurant9 = Restaurant.create(name: "Mayfair Garden", website: "http://mayfairgarden.co.uk/", note: "High end Chinese food")
+restaurant10 = Restaurant.create(name: "Poppies Fish & Chips", website: "http://poppiesfishandchips.co.uk/", note: "traditional fish and chips")
+hotel7 = Hotel.create(name: "Four Seasons Hotel London at Park Lane", website: "http://www.fourseasons.com/london/", note: "cause I roll like that")
+
+oscar2.countries = [england]
+england.locations = [london]
+london.sites = [site12, site13]
+london.restaurants = [restaurant9, restaurant10]
+london.hotels = [hotel7]
+oscar2.save
+england.save
+london.save
