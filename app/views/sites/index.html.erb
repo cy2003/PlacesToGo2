@@ -9,7 +9,7 @@
     <% ordered_sites = current_user.sites.order(:name) %>
     <% ordered_sites.each do |site|  %>
       <li>
-        <%= link_to "#{site.name}", site_path(site) %>
+        <%= link_to "#{site.name} - #{site.location.name}", site_path(site) %>
       </li>
     <% end %>
   <% end %>

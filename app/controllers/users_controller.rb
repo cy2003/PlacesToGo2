@@ -3,15 +3,19 @@ require 'pry'
 class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
+  # def index
+  #   @users = User.all
+  #   if params[:search]
+  #     @user = User.search(params[:search])
+  #     return redirect_to user_path(@user.ids[0])
+  #   else !params[:search]
+  #     flash[:notice] = "User was not found"
+  #     redirect_to '/'
+  #   end
+  # end
+
   def index
-    @users = User.all
-    if params[:search]
-      @user = User.search(params[:search])
-      return redirect_to user_path(@user.ids[0])
-    else !params[:search]
-      flash[:notice] = "User was not found"
-      redirect_to '/'
-    end
+    @users = User.search(params[:search])
   end
 
   def new

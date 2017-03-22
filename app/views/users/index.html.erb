@@ -1,1 +1,12 @@
-
+<h4>Other Travellers</h4>
+<ul>
+  <% if @users.blank? %>
+    <h5>There were no travellers found named "<%= params[:search] %>"</h5>
+  <% else %>
+    <% @users.each do |user| %>
+      <li>
+        <%= link_to "#{user.name}", user_path(user.id) %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

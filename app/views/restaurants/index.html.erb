@@ -9,7 +9,7 @@
     <% ordered_restaurants = current_user.restaurants.order(:name) %>
     <% ordered_restaurants.each do |restaurant|  %>
       <li>
-        <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+        <%= link_to "#{restaurant.name} - #{restaurant.location.name}", restaurant_path(restaurant) %>
       </li>
     <% end %>
   <% end %>

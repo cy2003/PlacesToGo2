@@ -86,11 +86,12 @@ us2.locations = [washington]
 washington.sites = [site14, site15]
 washington.restaurants = [restaurant11, restaurant12]
 washington.hotels = [hotel8]
-oscar.save
 australia.save
 sydney.save
 us2.save
 washington.save
+oscar.save
+
 
 oscar2 = User.create(name: "Oscar Two", email: "oscar2@me.com", password: "1234")
 england = Country.create(name: "England")

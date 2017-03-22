@@ -8,7 +8,6 @@
 </section>
 
 
-
 <% if current_user.id == params[:id].to_i %>
   <h4>The places you want to go</h4>
   <%= link_to "Countries", countries_path %>
@@ -45,7 +44,7 @@
       <% ordered_sites = current_user.sites.order(:name) %>
       <% ordered_sites.each do |site|  %>
         <li>
-          <%= link_to "#{site.name}", site_path(site) %>
+          <%= link_to "#{site.name} - #{site.location.name}", site_path(site) %>
         </li>
       <% end %>
     <% end %>
@@ -57,7 +56,7 @@
       <% ordered_restaurants = current_user.restaurants.order(:name) %>
       <% ordered_restaurants.each do |restaurant|  %>
         <li>
-          <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %>
+          <%= link_to "#{restaurant.name} - #{restaurant.location.name}", restaurant_path(restaurant) %>
         </li>
       <% end %>
     <% end %>
@@ -69,7 +68,7 @@
       <% ordered_hotels = current_user.hotels.order(:name) %>
       <% ordered_hotels.each do |hotel|  %>
         <li>
-          <%= link_to "#{hotel.name}", hotel_path(hotel) %>
+          <%= link_to "#{hotel.name} - #{hotel.location.name}", hotel_path(hotel) %>
         </li>
       <% end %>
     <% end %>
@@ -111,7 +110,7 @@
     <% ordered_sites = @user.sites.order(:name) %>
     <% ordered_sites.each do |site|  %>
       <li>
-        <%= link_to "#{site.name}", site.website, target: '_blank'%>
+        <%= link_to "#{site.name} - #{site.location.name}", site.website, target: '_blank'%>
       </li>
     <% end %>
   </ul>
@@ -120,7 +119,7 @@
     <% ordered_restaurants = @user.restaurants.order(:name) %>
     <% ordered_restaurants.each do |restaurant|  %>
       <li>
-        <%= link_to "#{restaurant.name}", restaurant.website, target: '_blank' %>
+        <%= link_to "#{restaurant.name} - #{restaurant.location.name}", restaurant.website, target: '_blank' %>
       </li>
     <% end %>
   </ul>
@@ -129,7 +128,7 @@
     <% ordered_hotels = @user.hotels.order(:name) %>
     <% ordered_hotels.each do |hotel|  %>
       <li>
-        <%= link_to "#{hotel.name}", hotel.website, target: '_blank' %>
+        <%= link_to "#{hotel.name} - #{hotel.location.name}", hotel.website, target: '_blank' %>
       </li>
     <% end %>
   </ul>

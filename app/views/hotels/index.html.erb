@@ -9,7 +9,7 @@
     <% ordered_hotels = current_user.hotels.order(:name) %>
     <% ordered_hotels.each do |hotel|  %>
       <li>
-        <%= link_to "#{hotel.name}", hotel_path(hotel) %>
+        <%= link_to "#{hotel.name} - #{hotel.location.name}", hotel_path(hotel) %>
       </li>
     <% end %>
   <% end %>
