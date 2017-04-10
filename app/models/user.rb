@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_many :countries, dependent: :destroy
-  has_many :locations, through: :countries, dependent: :destroy
+  has_many :countries, through: :user_countries
+  has_many :locations, through: :user_locations
+
   has_many :sites, through: :locations, dependent: :destroy
   has_many :restaurants, through: :locations, dependent: :destroy
   has_many :hotels, through: :locations, dependent: :destroy
