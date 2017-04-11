@@ -1,3 +1,3 @@
 class Restaurant < ApplicationRecord
-  belongs_to :location, optional: true
+  belongs_to :restable, :polymorphic => true
 end

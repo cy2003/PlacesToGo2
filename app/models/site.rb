@@ -1,3 +1,3 @@
 class Site < ApplicationRecord
-  belongs_to :location, optional: true
+  belongs_to :siteable, :polymorphic => true
 end

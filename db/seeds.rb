@@ -36,8 +36,13 @@ nairobi.sites = [site8, site9]
 nairobi.restaurants = [restaurant7]
 nairobi.hotels = [hotel4]
 
+cathy.locations = [hawaii, oregon, nairobi]
+cathy.sites = [site1, site2, site3, site8, site9]
+cathy.hotels = [hotel1, hotel2, hotel4]
+cathy.restaurants = [restaurant1, restaurant2, restaurant7]
+
 cathy.save
-us.save
+# us.save
 hawaii.save
 kenya.save
 nairobi.save
@@ -57,6 +62,11 @@ alberta.sites = [site6, site7]
 alberta.restaurants = [restaurant5]
 alberta.hotels = [hotel5]
 
+piper.locations = [alberta]
+piper.sites = [site6, site7]
+piper.restaurants = [restaurant5]
+piper.hotels = [hotel5]
+
 piper.save
 canada.save
 alberta.save
@@ -69,7 +79,7 @@ site11 = Site.create(name: "Freshwater Beach", website: "http://www.sydney.com/d
 restaurant8 = Restaurant.create(name: "Mamak", website: "https://mamak.com.au/", note: "Malaysian Cuisine")
 hotel6 = Hotel.create(name: "Shangri-La Hotel", website: "http://www.shangri-la.com/sydney/shangrila/", note: "5 stars")
 
-us2 = Country.create(name: "United States")
+# us2 = Country.create(name: "United States")
 washington = Location.create(name: "Washington")
 site14 = Site.create(name: "Olympic National Park", website: "https://www.nps.gov/olym/index.htm", note: "Oceans to mountaintops")
 site15 = Site.create(name: "San Juan Islands", website: "https://www.visitsanjuans.com/", note: "Loved it here. Saw killer whales")
@@ -77,18 +87,25 @@ restaurant11 = Restaurant.create(name: "Friday's Crabhouse", website: "http://ww
 restaurant12 = Restaurant.create(name: "Cynthia's Bistro", website: "http://cynthiasofcourse.com/", note: "Comfort food")
 hotel8 = Hotel.create(name: "Orcas Hotel", website: "https://www.orcashotel.com/", note: "Located on Orcas Island. Beautiful views.")
 
-oscar.countries = [australia, us2]
+oscar.countries = [australia, us]
 australia.locations = [sydney]
 sydney.sites = [site10, site11]
 sydney.restaurants = [restaurant8]
 sydney.hotels = [hotel6]
-us2.locations = [washington]
+
+us.locations << washington
 washington.sites = [site14, site15]
 washington.restaurants = [restaurant11, restaurant12]
 washington.hotels = [hotel8]
+
+oscar.locations = [sydney, washington]
+oscar.sites = [site10, site11, site14, site15]
+oscar.hotels = [hotel6, hotel8]
+oscar.restaurants = [restaurant8, restaurant11, restaurant12]
+
 australia.save
 sydney.save
-us2.save
+us.save
 washington.save
 oscar.save
 
@@ -104,9 +121,16 @@ hotel7 = Hotel.create(name: "Four Seasons Hotel London at Park Lane", website: "
 
 oscar2.countries = [england]
 england.locations = [london]
+oscar2.locations = [london]
+
 london.sites = [site12, site13]
 london.restaurants = [restaurant9, restaurant10]
 london.hotels = [hotel7]
+
+oscar2.sites = [site12, site13]
+oscar2.restaurants = [restaurant9, restaurant10]
+oscar2.hotels = [hotel7]
+
 oscar2.save
 england.save
 london.save

@@ -1,9 +1,10 @@
-<h2>Create New Country</h2>
+<h2>Add New Country</h2>
 
 <%= form_for(@country) do |f| %>
  	<%= f.label :name %>
  	<%= f.text_field :name %>
   <br>
   <br>
- 	<%= f.submit "Create Country" %>
+  <%= f.collection_select :user_ids, Country.all, :id, :name%>
+ 	<%= f.submit "Add Country" %>
 <% end %>

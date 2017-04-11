@@ -1,10 +1,12 @@
 class User < ApplicationRecord
+  has_many :user_countries
+  has_many :user_locations
   has_many :countries, through: :user_countries
   has_many :locations, through: :user_locations
 
-  has_many :sites, through: :locations, dependent: :destroy
-  has_many :restaurants, through: :locations, dependent: :destroy
-  has_many :hotels, through: :locations, dependent: :destroy
+  has_many :sites, :as => :siteable, dependent: :destroy
+  has_many :restaurants, :as => :restable, dependent: :destroy
+  has_many :hotels, :as => :hotelable, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

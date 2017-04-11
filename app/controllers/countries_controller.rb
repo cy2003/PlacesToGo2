@@ -16,10 +16,10 @@ class CountriesController < ApplicationController
   end
 
   def create
-    @country = Country.create(country_params)
-    @country.user_id = current_user.id
+    @country = Country.find_or_initialize_by(country_params)
+    @country.users << current_user
     @country.save
-    flash[:notice] = "#{@country.name} is a new country."
+    flash[:notice] = "#{@country.name} has been added to your list."
     redirect_to country_path(@country)
   end
 

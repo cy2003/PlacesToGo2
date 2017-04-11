@@ -1,3 +1,3 @@
 class Hotel < ApplicationRecord
-  belongs_to :location, optional: true
+  belongs_to :hotelable, :polymorphic => true
 end

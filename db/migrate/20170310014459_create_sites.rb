@@ -4,8 +4,10 @@ class CreateSites < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :website
       t.text :note
-      t.integer :location_id
-
+      t.references :siteable, polymorphic: true, index: true
+      # same as
+      # t.integer :siteable_id
+      # t.string :siteable_type 
       t.timestamps
     end
   end
