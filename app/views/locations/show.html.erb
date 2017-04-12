@@ -4,17 +4,21 @@
 
 <h2>Places to Go in <%=@location.name%></h2>
 
+
 <h3>Sites</h3>
 <ul>
   <% ordered_sites = @location.sites.order(:name) %>
   <% ordered_sites.each do |site| %>
     <li>
-      <%= link_to "#{site.name}", site.website, target: '_blank'%>
-      <br />
-      <label>Notes:</label>  <%=site.note %>
+      <% if site.interests.pluck(:user_id)[0] == current_user.id %>
+        <%= link_to "#{site.name}", site.website, target: '_blank'%>
+        <br />
+        <label>Notes:</label>  <%=site.note %>
+      <% end %>
     </li>
   <% end %>
 </ul>
+<br />
 <%= link_to "Add New Site", new_site_path(:location_id => @location.id) %>
 
 <h3>Restaurants</h3>
@@ -22,9 +26,11 @@
   <% ordered_restaurants = @location.restaurants.order(:name) %>
   <% ordered_restaurants.each do |restaurant| %>
     <li>
-      <%= link_to "#{restaurant.name}", restaurant.website, target: '_blank' %>
-      <br />
-      <label>Notes:</label>  <%=restaurant.note %>
+      <% if restaurant.interests.pluck(:user_id)[0] == current_user.id %>
+        <%= link_to "#{restaurant.name}", restaurant.website, target: '_blank' %>
+        <br />
+        <label>Notes:</label>  <%=restaurant.note %>
+      <%end%>
     </li>
   <% end %>
 </ul>
@@ -35,20 +41,23 @@
   <% ordered_hotels = @location.hotels.order(:name) %>
   <% ordered_hotels.each do |hotel| %>
     <li>
-      <%= link_to "#{hotel.name}", hotel.website, target: '_blank' %>
-      <br />
-      <label>Notes:</label>  <%=hotel.note %>
+      <% if hotel.interests.pluck(:user_id)[0] == current_user.id %>
+        <%= link_to "#{hotel.name}", hotel.website, target: '_blank' %>
+        <br />
+        <label>Notes:</label>  <%=hotel.note %>
+      <%end%>
     </li>
   <% end %>
 </ul>
 
 <%= link_to "Add New Hotel", new_hotel_path(:location_id => @location.id)  %>
 
-
-<!-- <label style="margin-left: 20px"><%= link_to "Restaurants", restaurant_path%></label> -->
-<br />
 <br />
 <br />
 <%= link_to "Edit Location", edit_location_path %>
 <br />
 <%= link_to "Delete This Location", location_path(@location), method: :delete %>
+<br />
+<br />
+<h4>See places other travellers are going in Hawaii</h4>
+<%= link_to "Other Places in #{@location.name}", others_location_path %>

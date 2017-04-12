@@ -1,0 +1,38 @@
+<h2>Other Places to Go in <%=@location.name%></h2>
+
+
+<h3>Sites</h3>
+<ul>
+  <% ordered_sites = @location.sites.order(:name) %>
+  <% ordered_sites.each do |site| %>
+    <li>
+        <%= link_to "#{site.name}", site.website, target: '_blank'%>
+        <br />
+    </li>
+  <% end %>
+</ul>
+<br />
+
+
+<h3>Restaurants</h3>
+<ul>
+  <% ordered_restaurants = @location.restaurants.order(:name) %>
+  <% ordered_restaurants.each do |restaurant| %>
+    <li>
+        <%= link_to "#{restaurant.name}", restaurant.website, target: '_blank' %>
+        <br />
+    </li>
+  <% end %>
+</ul>
+
+
+<h3>Hotels</h3>
+<ul>
+  <% ordered_hotels = @location.hotels.order(:name) %>
+  <% ordered_hotels.each do |hotel| %>
+    <li>
+        <%= link_to "#{hotel.name}", hotel.website, target: '_blank' %>
+        <br />
+    </li>
+  <% end %>
+</ul>

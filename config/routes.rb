@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :locations do
+    member do
+      get :others
+    end
+  end
+
   # resources :users
   resources :user_countries
   resources :hotels

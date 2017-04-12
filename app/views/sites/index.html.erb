@@ -2,10 +2,10 @@
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<h2>Sites</h2>
 
 <ul>
   <% if current_user %>
+    <h2>Sites</h2>
     <% ordered_sites = current_user.sites.order(:name) %>
     <% ordered_sites.each do |site|  %>
       <li>

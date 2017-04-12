@@ -86,6 +86,11 @@ restaurant11 = Restaurant.create(name: "Friday's Crabhouse", website: "http://ww
 restaurant12 = Restaurant.create(name: "Cynthia's Bistro", website: "http://cynthiasofcourse.com/", note: "Comfort food")
 hotel8 = Hotel.create(name: "Orcas Hotel", website: "https://www.orcashotel.com/", note: "Located on Orcas Island. Beautiful views.")
 
+site16 = Site.create(name: "Waimea", website: "https://www.gohawaii.com/big-island/regions-neighborhoods/north-kohala/waimea/", note: "Cowboy Country")
+site17 = Site.create(name: "Pololu Valley Lookout", website: "https://www.gohawaii.com/big-island/regions-neighborhoods/north-kohala/pololu-valley-lookout/", note: "Northeast Coastline")
+restaurant13 = Restaurant.create(name: "Hawaiian Style Cafe", website: "http://hawaiianstylecafe.us/", note: "local Hawaiian comfort food")
+hotel9 = Hotel.create(name: "Kamuela Inn", website: "https://www.thekamuelainn.com/", note: "One the slopes of the Kohala Mountain Range. B&B with free WiFi.")
+
 oscar.countries = [australia, us]
 australia.locations = [sydney]
 sydney.sites = [site10, site11]
@@ -97,10 +102,15 @@ washington.sites = [site14, site15]
 washington.restaurants = [restaurant11, restaurant12]
 washington.hotels = [hotel8]
 
-oscar.locations = [sydney, washington]
-oscar.sites = [site10, site11, site14, site15]
-oscar.hotels = [hotel6, hotel8]
-oscar.restaurants = [restaurant8, restaurant11, restaurant12]
+oscar.locations = [sydney, washington, hawaii]
+oscar.sites = [site10, site11, site14, site15, site16, site17]
+oscar.hotels = [hotel6, hotel8, hotel9]
+oscar.restaurants = [restaurant8, restaurant11, restaurant12, restaurant13]
+
+hawaii.sites << site16
+hawaii.sites << site17
+hawaii.hotels << hotel9
+hawaii.restaurants << restaurant13
 
 australia.save
 sydney.save

@@ -21,7 +21,6 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @user = User.find(session[:user_id])
   end
 
   def update
@@ -40,6 +39,11 @@ class LocationsController < ApplicationController
     @location.destroy
     flash[:notice] = "You deleted #{@location.name}."
     redirect_to locations_path
+  end
+
+  def others
+    @location = Location.find(params[:id])
+    render 'show_others'
   end
 
   private
