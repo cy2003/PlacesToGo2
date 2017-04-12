@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
   has_many :interests
 
-  has_many :sites, through: :interests
-  has_many :restaurants, through: :interests
-  has_many :hotels, through: :interests
+  has_many :sites, through: :interests, source: :interestable, source_type: 'Site'
+  has_many :restaurants, through: :interests, source: :interestable, source_type: 'Restaurant'
+  has_many :hotels, through: :interests, source: :interestable, source_type: 'Hotel'
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410155709) do
+ActiveRecord::Schema.define(version: 20170411212012) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
@@ -22,11 +22,18 @@ ActiveRecord::Schema.define(version: 20170410155709) do
     t.string   "name"
     t.string   "website"
     t.text     "note"
-    t.string   "hotelable_type"
-    t.integer  "hotelable_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["hotelable_type", "hotelable_id"], name: "index_hotels_on_hotelable_type_and_hotelable_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "interestable_type"
+    t.integer  "interestable_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["interestable_type", "interestable_id"], name: "index_interests_on_interestable_type_and_interestable_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -48,22 +55,18 @@ ActiveRecord::Schema.define(version: 20170410155709) do
     t.string   "name"
     t.string   "website"
     t.text     "note"
-    t.string   "restable_type"
-    t.integer  "restable_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["restable_type", "restable_id"], name: "index_restaurants_on_restable_type_and_restable_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "sites", force: :cascade do |t|
     t.string   "name"
     t.string   "website"
     t.text     "note"
-    t.string   "siteable_type"
-    t.integer  "siteable_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["siteable_type", "siteable_id"], name: "index_sites_on_siteable_type_and_siteable_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "user_countries", force: :cascade do |t|
