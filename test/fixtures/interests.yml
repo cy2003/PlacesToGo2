@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  interestable: 
+  polymorphic: MyString
+  true,: MyString
+  index: MyString
+  'true': MyString
+
+two:
+  interestable: 
+  polymorphic: MyString
+  true,: MyString
+  index: MyString
+  'true': MyString

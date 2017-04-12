@@ -30,22 +30,21 @@ us.locations = [hawaii, oregon]
 hawaii.sites = [site1, site2, site3]
 hawaii.restaurants = [restaurant1, restaurant2]
 hawaii.hotels = [hotel1, hotel2]
+hawaii.save
 
 kenya.locations = [nairobi]
 nairobi.sites = [site8, site9]
 nairobi.restaurants = [restaurant7]
 nairobi.hotels = [hotel4]
+nairobi.save
+kenya.save
 
 cathy.locations = [hawaii, oregon, nairobi]
 cathy.sites = [site1, site2, site3, site8, site9]
 cathy.hotels = [hotel1, hotel2, hotel4]
 cathy.restaurants = [restaurant1, restaurant2, restaurant7]
-
 cathy.save
 # us.save
-hawaii.save
-kenya.save
-nairobi.save
 
 piper = User.create(name: "Piper", email: "piper@me.com", password: "1234")
 canada = Country.create(name: "Canada")

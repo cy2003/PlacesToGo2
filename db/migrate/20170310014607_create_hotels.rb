@@ -4,7 +4,7 @@ class CreateHotels < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :website
       t.text :note
-      t.references :hotelable, polymorphic: true, index: true
+      t.integer :location_id
 
       t.timestamps
     end
