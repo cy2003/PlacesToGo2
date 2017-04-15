@@ -15,6 +15,7 @@ class LocationsController < ApplicationController
     @location = Location.find_or_initialize_by(name: params[:location][:name])
     @location.country_id = params[:location][:country_id]
     @location.save
+    current_user.locations << @location
     flash[:notice] = "#{@location.name} is a new location."
     redirect_to location_path(@location)
   end
@@ -25,9 +26,13 @@ class LocationsController < ApplicationController
 
   def update
     @location = Location.find_or_initialize_by(name: params[:location][:name])
-    @location.country_id = params[:location][:country_id]
     @location.save
-    redirect_to location_path(@location)
+    if current_user.locations.include?(@location)
+      redirect_to location_path(@location)
+    else
+      current_user.locations << @location
+      redirect_to location_path(@location)
+    end
   end
 
   def edit

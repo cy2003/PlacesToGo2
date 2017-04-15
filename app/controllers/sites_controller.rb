@@ -10,6 +10,7 @@ class SitesController < ApplicationController
     @site = Site.find_or_initialize_by(name: params[:site][:name])
     @site.location_id = params[:site][:location_id]
     @site.save
+    current_user.sites << @site
     flash[:notice] = "#{@site.name} is a new site."
     redirect_to site_path(@site)
   end
@@ -29,7 +30,12 @@ class SitesController < ApplicationController
     @site.note = params[:site][:note]
     @site.location_id = params[:site][:location_id]
     @site.save
-    redirect_to site_path(@site)
+    if current_user.sites.include?(@site)
+      redirect_to site_path(@site)
+    else
+      current_user.sites << @site
+      redirect_to site_path(@site)
+    end
   end
 
   def edit

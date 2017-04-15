@@ -8,12 +8,13 @@ class HotelsController < ApplicationController
       @hotel = Hotel.find_or_initialize_by(name: params[:hotel][:name])
       @hotel.location_id = params[:hotel][:location_id]
       @hotel.save
+      current_user.hotels << @hotel
       flash[:notice] = "#{@hotel.name} is a new hotel."
       redirect_to hotel_path(@hotel)
     end
 
     def index
-      @sites = Hotel.all
+      @hotels = Hotel.all
     end
 
     def show
@@ -26,7 +27,12 @@ class HotelsController < ApplicationController
       @hotel.note = params[:hotel][:note]
       @hotel.location_id = params[:hotel][:location_id]
       @hotel.save
-      redirect_to hotel_path(@hotel)
+      if current_user.hotels.include?(@hotel)
+        redirect_to hotel_path(@hotel)
+      else
+        current_user.hotels << @hotel
+        redirect_to hotel_path(@hotel)
+      end
     end
 
     def edit

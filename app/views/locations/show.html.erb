@@ -59,5 +59,6 @@
 <%= link_to "Delete This Location", location_path(@location), method: :delete %>
 <br />
 <br />
-<h4>See places other travellers are going in Hawaii</h4>
+<%= "See places other travellers are going in #{@location.name}" %>
+<br />
 <%= link_to "Other Places in #{@location.name}", others_location_path %>

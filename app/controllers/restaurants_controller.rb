@@ -10,6 +10,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find_or_initialize_by(name: params[:restaurant][:name])
     @restaurant.location_id = params[:restaurant][:location_id]
     @restaurant.save
+    current_user.restaurants << @restaurant
     flash[:notice] = "#{@restaurant.name} is a new restaurant."
     redirect_to restaurant_path(@restaurant)
   end
@@ -28,7 +29,12 @@ class RestaurantsController < ApplicationController
     @restaurant.note = params[:restaurant][:note]
     @restaurant.location_id = params[:restaurant][:location_id]
     @restaurant.save
-    redirect_to restaurant_path(@restaurant)
+    if current_user.restaurants.include?(@restaurant)
+      redirect_to restaurant_path(@restaurant)
+    else
+      current_user.restaurants << @restaurant
+      redirect_to restaurant_path(@restaurant)
+    end
   end
 
   def edit
