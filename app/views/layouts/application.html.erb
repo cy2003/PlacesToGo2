@@ -16,49 +16,38 @@
   <body>
 
     <header>
-
         <!-- <div class="navbar navbar-inverse navbar-fixed-top"> -->
-
-            <div class="navbar-wrapper">
-              <div class="container">
-                <a class="brand-logo" href="<%= root_url %>"/><h2>Places To Go</h2></a>
-                <br />
-                <!-- <div class="navbar-collapse collapse"> -->
-                  <!-- <div class="row"> -->
-                    <ul id="nav-mobile" class="right">
-                      <% if current_user %>
-                        <li><%= link_to "Home", user_path(current_user)%></li>
-                        <li><%= link_to "Countries", countries_path %></li>
-                        <li><%= link_to "Locations", locations_path %></li>
-                        <li><%= link_to "Sites", sites_path %></li>
-                        <li><%= link_to "Restaurants", restaurants_path %></li>
-                        <li><%= link_to "Hotels", hotels_path %></li>
-                        <li><%= link_to "Log Out", logout_path %></li>
-                        <br />
-                        <br />
-                        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-                          <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
-                          <%= submit_tag "Search", :name => nil %>
-                        <% end %>
-                      <% else %>
-                        <li><%= link_to "Sign Up", new_user_path %></li>
-                        <li><%= link_to "Sign In", signin_path %></li>
-                      <% end %>
-                     <!--  nav here -->
-                    </ul>
-                  <!-- </div> -->
-                  <!-- </div> -->
-                  <!--/.nav-collapse -->
-                <!-- </div> -->
-              </div>
-            </div>
-
-        <!-- </div> -->
-
-
-
+      <div class="navbar-wrapper">
+        <div class="container">
+          <a class="brand-logo" href="<%= root_url %>"/><h2>Places To Go</h2></a>
+          <br />
+          <!-- <div class="navbar-collapse collapse"> -->
+            <!-- <div class="row"> -->
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <% if current_user %>
+                  <li><%= link_to "Home", user_path(current_user)%></li>
+                  <li><%= link_to "Countries", countries_path %></li>
+                  <li><%= link_to "Locations", locations_path %></li>
+                  <li><%= link_to "Sites", sites_path %></li>
+                  <li><%= link_to "Restaurants", restaurants_path %></li>
+                  <li><%= link_to "Hotels", hotels_path %></li>
+                  <li><%= link_to "Log Out", logout_path %></li>
+                  <br />
+                  <br />
+                  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+                    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+                    <%= submit_tag "Search", :name => nil %>
+                  <% end %>
+                <% else %>
+                  <li><%= link_to "Sign Up", new_user_path %></li>
+                  <li><%= link_to "Sign In", signin_path %></li>
+                <% end %>
+              </ul>
+        </div>
+      </div>
     </header>
-
+    <br />
+    <br />
     <br />
     <br />
 
