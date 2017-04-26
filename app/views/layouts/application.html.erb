@@ -6,45 +6,50 @@
     <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/grid.css" />
     <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/application.css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400" rel="stylesheet"> -->
-    <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-    <%#<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>%>
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link> -->
   </head>
 
   <body>
 
     <header>
         <!-- <div class="navbar navbar-inverse navbar-fixed-top"> -->
-      <div class="navbar-wrapper">
-        <div class="container">
-          <a class="brand-logo" href="<%= root_url %>"/><h2>Places To Go</h2></a>
-          <br />
-          <!-- <div class="navbar-collapse collapse"> -->
-            <!-- <div class="row"> -->
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <% if current_user %>
-                  <li><%= link_to "Home", user_path(current_user)%></li>
-                  <li><%= link_to "Countries", countries_path %></li>
-                  <li><%= link_to "Locations", locations_path %></li>
-                  <li><%= link_to "Sites", sites_path %></li>
-                  <li><%= link_to "Restaurants", restaurants_path %></li>
-                  <li><%= link_to "Hotels", hotels_path %></li>
-                  <li><%= link_to "Log Out", logout_path %></li>
-                  <br />
-                  <br />
-                  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-                    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
-                    <%= submit_tag "Search", :name => nil %>
+
+        <div class="navbar-wrapper">
+          <div class="container">
+            <a class="brand-logo" href="<%= root_url %>"/><h2>Places To Go</h2></a>
+            <br />
+            <!-- <div class="navbar-collapse collapse"> -->
+              <!-- <div class="row"> -->
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <% if current_user %>
+                    <li><%= link_to "Home", user_path(current_user)%></li>
+                    <li><%= link_to "Countries", countries_path %></li>
+                    <li><%= link_to "Locations", locations_path %></li>
+                    <li><%= link_to "Sites", sites_path %></li>
+                    <li><%= link_to "Restaurants", restaurants_path %></li>
+                    <li><%= link_to "Hotels", hotels_path %></li>
+                    <li><%= link_to "Log Out", logout_path %></li>
+                    <br />
+                    <br />
+                    <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+                      <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+                      <%= submit_tag "Search", :name => nil %>
+                    <% end %>
+                  <% else %>
+                    <li><%= link_to "Sign Up", new_user_path %></li>
+                    <li><%= link_to "Sign In", signin_path %></li>
                   <% end %>
-                <% else %>
-                  <li><%= link_to "Sign Up", new_user_path %></li>
-                  <li><%= link_to "Sign In", signin_path %></li>
-                <% end %>
-              </ul>
+                </ul>
+          </div>
         </div>
-      </div>
+
+
+
     </header>
     <br />
     <br />

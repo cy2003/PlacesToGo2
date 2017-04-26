@@ -1,27 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an app for travelers to keep track of the places they want to visit. They can list countries, locations, restaurants, hotels, and sites. They can see places that other travelers want to go in the same location and follow other travelers.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# PlacesToGo
-
-Use `rails s` in terminal to run the application
+To use it
+Enter 'rails s' in terminal to run the application and go to localhost:3000 in the browser.
