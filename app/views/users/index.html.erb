@@ -1,7 +1,7 @@
-<h4>Other Travellers</h4>
+<h4>Other Travelers</h4>
 <ul>
   <% if @users.blank? %>
-    <h5>There were no travellers found named "<%= params[:search] %>"</h5>
+    <h5>Sorry, there are no travelers found named "<%= params[:search] %>"</h5>
   <% else %>
     <% @users.each do |user| %>
       <li>
