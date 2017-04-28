@@ -13,14 +13,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <% if current_user %>
-      <ul class="nav navbar-nav">
 
-      </ul>
-      <ul class="navbar-form navbar-left">
-
-      </ul>
-      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li id="search">
@@ -29,11 +22,10 @@
               <%= submit_tag "Search", :name => nil %>
             <% end %>
           </li>
-          <li><%= link_to "My Page", user_path(current_user)%></li>
+          <li class="links"><%= link_to "My Page", user_path(current_user)%></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Places <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "My Page", user_path(current_user)%></li>
               <li><%= link_to "Countries", countries_path %></li>
               <li><%= link_to "Locations", locations_path %></li>
               <li><%= link_to "Sites", sites_path %></li>
@@ -41,10 +33,10 @@
               <li><%= link_to "Hotels", hotels_path %></li>
             </ul>
           </li>
-          <li><%= link_to "Log Out", logout_path %></li>
+          <li class="links"><%= link_to "Log Out", logout_path %></li>
         <% else %>
-          <li><%= link_to "Sign Up", new_user_path %></li>
-          <li><%= link_to "Sign In", signin_path %></li>
+          <li class="links"><%= link_to "Sign Up", new_user_path %></li>
+          <li class="links"><%= link_to "Sign In", signin_path %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
