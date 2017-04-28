@@ -1,13 +1,23 @@
-<h2>Please Sign In</h2>
+<h2 align="center">Please Sign In</h2>
 
-<%= form_tag sessions_path do %>
-  <%= label_tag :email %>
- 	<%= email_field_tag 'user[email]' %>
-  <br>
-  <br>
- 	<%= label_tag :password %>
- 	<%= password_field_tag 'user[password]'%>
-  <br>
-  <br>
- 	<%= submit_tag "Sign In" %>
-<% end %>
+<div class='row'>
+  <div class='col-xs-12'>
+    <%= form_tag(sessions_path, :html => {class: "form-horizontal", role: "form"}) do %>
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <%= label_tag :email %>
+      </div>
+      <div class="col-sm-8">
+       	<%= email_field_tag 'user[email]', class: "form-control", placeholder: "Name"%>
+      </div>
+    </div>
+      <br>
+      <br>
+     	<%= label_tag :password %>
+     	<%= password_field_tag 'user[password]'%>
+      <br>
+      <br>
+     	<%= submit_tag "Sign In" %>
+    <% end %>
+  </div>
+</div>
