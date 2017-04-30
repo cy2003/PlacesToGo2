@@ -28,9 +28,11 @@ class LocationsController < ApplicationController
     @location = Location.find_or_initialize_by(name: params[:location][:name])
     @location.save
     if current_user.locations.include?(@location)
+      flash[:notice] = "#{@location.name} is a new location."
       redirect_to location_path(@location)
     else
       current_user.locations << @location
+      flash[:notice] = "#{@location.name} is a new location."
       redirect_to location_path(@location)
     end
   end

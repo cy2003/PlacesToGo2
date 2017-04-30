@@ -31,6 +31,7 @@ class HotelsController < ApplicationController
         redirect_to hotel_path(@hotel)
       else
         current_user.hotels << @hotel
+        flash[:notice] = "You've added #{@hotel.name}"
         redirect_to hotel_path(@hotel)
       end
     end

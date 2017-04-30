@@ -34,6 +34,7 @@ class SitesController < ApplicationController
       redirect_to site_path(@site)
     else
       current_user.sites << @site
+      flash[:notice] = "You've added #{@site.name}"
       redirect_to site_path(@site)
     end
   end
@@ -45,7 +46,7 @@ class SitesController < ApplicationController
   def destroy
     @site = Site.find(params[:id])
     @site.destroy
-    flash[:notice] = "You deleted #{@site.name}."
+    flash[:notice] = "You deleted #{@site.name}"
     redirect_to sites_path
   end
 

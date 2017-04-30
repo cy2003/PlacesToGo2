@@ -33,6 +33,7 @@ class RestaurantsController < ApplicationController
       redirect_to restaurant_path(@restaurant)
     else
       current_user.restaurants << @restaurant
+      flash[:notice] = "You've added #{@restaurant.name}"
       redirect_to restaurant_path(@restaurant)
     end
   end
